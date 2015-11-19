@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AutoReservationModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Auto" Abstract="true">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" ConcurrencyMode="Fixed" />
+    <Property Name="Marke" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" ConcurrencyMode="Fixed" />
+    <Property Name="Tagestarif" Type="Int32" Nullable="false" ConcurrencyMode="Fixed" />
+    <NavigationProperty Name="Reservations" Relationship="Self.FK_Reservation_Auto" FromRole="Auto" ToRole="Reservation" />
+  </EntityType>
+  <EntityType Name="Kunde">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" ConcurrencyMode="Fixed" />
+    <Property Name="Nachname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" ConcurrencyMode="Fixed" />
+    <Property Name="Vorname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" ConcurrencyMode="Fixed" />
+    <Property Name="Geburtsdatum" Type="DateTime" Nullable="false" Precision="3" ConcurrencyMode="Fixed" />
+    <NavigationProperty Name="Reservations" Relationship="Self.FK_Reservation_Kunde" FromRole="Kunde" ToRole="Reservation" />
+  </EntityType>
+  <EntityType Name="Reservation">
+    <Key>
+      <PropertyRef Name="ReservationNr" />
+    </Key>
+    <Property Name="ReservationNr" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" ConcurrencyMode="Fixed" />
+    <Property Name="AutoId" Type="Int32" Nullable="false" ConcurrencyMode="Fixed" />
+    <Property Name="KundeId" Type="Int32" Nullable="false" ConcurrencyMode="Fixed" />
+    <Property Name="Von" Type="DateTime" Nullable="false" Precision="3" ConcurrencyMode="Fixed" />
+    <Property Name="Bis" Type="DateTime" Nullable="false" Precision="3" ConcurrencyMode="Fixed" />
+    <NavigationProperty Name="Auto" Relationship="Self.FK_Reservation_Auto" FromRole="Reservation" ToRole="Auto" />
+    <NavigationProperty Name="Kunde" Relationship="Self.FK_Reservation_Kunde" FromRole="Reservation" ToRole="Kunde" />
+  </EntityType>
+  <Association Name="FK_Reservation_Auto">
+    <End Role="Auto" Type="Self.Auto" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Auto">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Reservation">
+        <PropertyRef Name="AutoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reservation_Kunde">
+    <End Role="Kunde" Type="Self.Kunde" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kunde">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Reservation">
+        <PropertyRef Name="KundeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AutoReservationEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Autos" EntityType="Self.Auto" />
+    <EntitySet Name="Kunden" EntityType="Self.Kunde" />
+    <EntitySet Name="Reservationen" EntityType="Self.Reservation" />
+    <AssociationSet Name="FK_Reservation_Auto" Association="Self.FK_Reservation_Auto">
+      <End Role="Auto" EntitySet="Autos" />
+      <End Role="Reservation" EntitySet="Reservationen" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reservation_Kunde" Association="Self.FK_Reservation_Kunde">
+      <End Role="Kunde" EntitySet="Kunden" />
+      <End Role="Reservation" EntitySet="Reservationen" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="StandardAuto" BaseType="AutoReservationModel.Auto" />
+  <EntityType Name="MittelKlasseAuto" BaseType="AutoReservationModel.Auto" />
+  <EntityType Name="LuxusKlasseAuto" BaseType="AutoReservationModel.Auto">
+    <Property Name="Basistarif" Type="Int32" ConcurrencyMode="None" />
+  </EntityType>
+</Schema>

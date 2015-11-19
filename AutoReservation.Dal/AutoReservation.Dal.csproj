@@ -69,21 +69,78 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\AssemblyInfo.Shared.cs">
       <Link>Properties\AssemblyInfo.Shared.cs</Link>
     </Compile>
+    <Compile Include="Auto.cs">
+      <DependentUpon>AutoReservationenModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AutoReservationenModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AutoReservationenModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AutoReservationenModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AutoReservationenModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AutoReservationenModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AutoReservationenModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Kunde.cs">
+      <DependentUpon>AutoReservationenModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LuxusKlasseAuto.cs">
+      <DependentUpon>AutoReservationenModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MittelKlasseAuto.cs">
+      <DependentUpon>AutoReservationenModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reservation.cs">
+      <DependentUpon>AutoReservationenModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StandardAuto.cs">
+      <DependentUpon>AutoReservationenModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\MsTeMiniproject.snk">
       <Link>MsTeMiniproject.snk</Link>
     </None>
+    <EntityDeploy Include="AutoReservationenModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AutoReservationenModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="App.Config" />
+    <None Include="AutoReservationenModel.edmx.diagram">
+      <DependentUpon>AutoReservationenModel.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AutoReservationenModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AutoReservationenModel.edmx</DependentUpon>
+      <LastGenOutput>AutoReservationenModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="AutoReservationenModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AutoReservationenModel.edmx</DependentUpon>
+      <LastGenOutput>AutoReservationenModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

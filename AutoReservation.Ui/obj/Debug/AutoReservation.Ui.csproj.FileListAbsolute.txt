@@ -1,0 +1,11 @@
+C:\Users\shoda_000\Desktop\C#-Miniprojekt\AutoReservation.Ui\bin\Debug\AutoReservation.Ui.exe.config
+C:\Users\shoda_000\Desktop\C#-Miniprojekt\AutoReservation.Ui\obj\Debug\AutoReservation.Ui.csprojResolveAssemblyReference.cache
+C:\Users\shoda_000\Desktop\C#-Miniprojekt\AutoReservation.Ui\obj\Debug\Views\AutoView.g.cs
+C:\Users\shoda_000\Desktop\C#-Miniprojekt\AutoReservation.Ui\obj\Debug\MainWindow.g.cs
+C:\Users\shoda_000\Desktop\C#-Miniprojekt\AutoReservation.Ui\obj\Debug\Views\KundeView.g.cs
+C:\Users\shoda_000\Desktop\C#-Miniprojekt\AutoReservation.Ui\obj\Debug\Views\ReservationView.g.cs
+C:\Users\shoda_000\Desktop\C#-Miniprojekt\AutoReservation.Ui\obj\Debug\App.g.cs
+C:\Users\shoda_000\Desktop\C#-Miniprojekt\AutoReservation.Ui\obj\Debug\AutoReservation.Ui_Content.g.cs
+C:\Users\shoda_000\Desktop\C#-Miniprojekt\AutoReservation.Ui\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\shoda_000\Desktop\C#-Miniprojekt\AutoReservation.Ui\obj\Debug\AutoReservation.Ui_MarkupCompile.cache
+C:\Users\shoda_000\Desktop\C#-Miniprojekt\AutoReservation.Ui\obj\Debug\AutoReservation.Ui_MarkupCompile.lref
