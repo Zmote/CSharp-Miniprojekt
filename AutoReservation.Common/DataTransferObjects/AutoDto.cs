@@ -10,7 +10,8 @@ namespace AutoReservation.Common.DataTransferObjects
         private string marke;
         private int tagestarif;
         private int basistarif;
-        private int autoklasse;
+        //TODO: check if it works like this, no need for property?
+        private AutoKlasse AutoKlasse;
 
         public int Id
         {
@@ -68,21 +69,6 @@ namespace AutoReservation.Common.DataTransferObjects
             }
         }
 
-        public int AutoKlasse
-        {
-            get { return autoklasse; }
-            set
-            {
-                if (autoklasse == value)
-                {
-                    return;
-                }
-                autoklasse = value;
-                this.OnPropertyChanged(p => p.AutoKlasse);
-            }
-        }
-
-
         public override string Validate()
         {
             StringBuilder error = new StringBuilder();
@@ -94,7 +80,7 @@ namespace AutoReservation.Common.DataTransferObjects
             {
                 error.AppendLine("- Tagestarif muss grösser als 0 sein.");
             }
-            //TODO: Check --> implementation muss wohl ein bisschen anders sein, direkter Zugriff auf DB-Objekte? Maybe, lese Miniprojekt PDF
+            //TODO: implement enum correctly
             if (AutoKlasse == AutoKlasse.Luxusklasse && basistarif <= 0)
             {
                 error.AppendLine("- Basistarif eines Luxusautos muss grösser als 0 sein.");
