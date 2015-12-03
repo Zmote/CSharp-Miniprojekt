@@ -10,7 +10,20 @@ namespace AutoReservation.Common.DataTransferObjects
         private int id;
         private string nachname;
         private string vorname;
-        private DateTime Geburtsdatum;
+        private DateTime geburtsdatum;
+
+        public DateTime Geburtsdatum
+        {
+            get
+            {
+                return geburtsdatum;
+            }
+
+            set
+            {
+                geburtsdatum = value;
+            }
+        }
 
         public int Id
         {

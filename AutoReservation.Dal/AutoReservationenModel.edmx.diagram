@@ -12,10 +12,10 @@
         <AssociationConnector Association="AutoReservationModel.FK_Reservation_Kunde" ManuallyRouted="false" />
         <EntityTypeShape EntityType="AutoReservationModel.StandardAuto" Width="1.5" PointX="5.625" PointY="6.625" />
         <InheritanceConnector EntityType="AutoReservationModel.StandardAuto" />
-        <EntityTypeShape EntityType="AutoReservationModel.MittelKlasseAuto" Width="1.5" PointX="3.125" PointY="6.625" />
-        <InheritanceConnector EntityType="AutoReservationModel.MittelKlasseAuto" />
-        <EntityTypeShape EntityType="AutoReservationModel.LuxusKlasseAuto" Width="1.5" PointX="0.5" PointY="6.625" />
-        <InheritanceConnector EntityType="AutoReservationModel.LuxusKlasseAuto" />
+        <EntityTypeShape EntityType="AutoReservationModel.MittelklasseAuto" Width="1.5" PointX="3.125" PointY="6.625" />
+        <InheritanceConnector EntityType="AutoReservationModel.MittelklasseAuto" />
+        <EntityTypeShape EntityType="AutoReservationModel.LuxusklasseAuto" Width="1.5" PointX="0.5" PointY="6.625" />
+        <InheritanceConnector EntityType="AutoReservationModel.LuxusklasseAuto" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -73,8 +73,8 @@
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="StandardAuto" BaseType="AutoReservationModel.Auto" />
-  <EntityType Name="MittelKlasseAuto" BaseType="AutoReservationModel.Auto" />
-  <EntityType Name="LuxusKlasseAuto" BaseType="AutoReservationModel.Auto">
+  <EntityType Name="MittelklasseAuto" BaseType="AutoReservationModel.Auto" />
+  <EntityType Name="LuxusklasseAuto" BaseType="AutoReservationModel.Auto">
     <Property Name="Basistarif" Type="Int32" ConcurrencyMode="None" />
   </EntityType>
 </Schema>

@@ -99,10 +99,10 @@
     <Compile Include="Kunde.cs">
       <DependentUpon>AutoReservationenModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="LuxusKlasseAuto.cs">
+    <Compile Include="LuxusklasseAuto.cs">
       <DependentUpon>AutoReservationenModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="MittelKlasseAuto.cs">
+    <Compile Include="MittelklasseAuto.cs">
       <DependentUpon>AutoReservationenModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

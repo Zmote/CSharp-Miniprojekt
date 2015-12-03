@@ -10,8 +10,34 @@ namespace AutoReservation.Common.DataTransferObjects
         private DateTime von;
         private int id;
         private DateTime bis;
-        private AutoDto Auto;
-        private KundeDto Kunde;
+        private AutoDto auto;
+        private KundeDto kunde;
+
+
+        public AutoDto Auto
+        {
+            get
+            {
+                return auto;
+            }
+            set
+            {
+                auto = value;
+            }
+        }
+
+        public KundeDto Kunde
+        {
+            get
+            {
+                return kunde;
+            }
+
+            set
+            {
+                kunde = value;
+            }
+        }
 
         public int ReservationNr
         {

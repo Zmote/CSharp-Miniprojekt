@@ -12,7 +12,7 @@ namespace AutoReservation.Dal
     using System;
     using System.Collections.Generic;
     
-    public partial class MittelKlasseAuto : Auto
+    public partial class MittelklasseAuto : Auto
     {
     }
 }

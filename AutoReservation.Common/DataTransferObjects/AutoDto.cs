@@ -11,7 +11,19 @@ namespace AutoReservation.Common.DataTransferObjects
         private int tagestarif;
         private int basistarif;
         //TODO: check if it works like this, no need for property?
-        private AutoKlasse AutoKlasse;
+        private AutoKlasse autoklasse;
+
+        public AutoKlasse AutoKlasse
+        {
+            get
+            {
+                return autoklasse;
+            }
+            set
+            {
+                autoklasse = value;
+            }
+        }
 
         public int Id
         {
