@@ -1,18 +1,21 @@
 ﻿using AutoReservation.Common.Extensions;
 using AutoReservation.Common.DataTransferObjects.Core;
 using System.Text;
+using System.Runtime.Serialization;
 
 namespace AutoReservation.Common.DataTransferObjects
 {
+    [DataContract]
     public class AutoDto : DtoBase<AutoDto>
     {
         private int id;
-        private string marke;
-        private int tagestarif;
-        private int basistarif;
+        private string marke = "";
+        private int tagestarif = 0;
+        private int basistarif = 0;
         //TODO: check if it works like this, no need for property?
         private AutoKlasse autoklasse;
 
+        [DataMember]
         public AutoKlasse AutoKlasse
         {
             get
@@ -25,6 +28,7 @@ namespace AutoReservation.Common.DataTransferObjects
             }
         }
 
+        [DataMember]
         public int Id
         {
             get { return id; }
@@ -39,20 +43,23 @@ namespace AutoReservation.Common.DataTransferObjects
             }
         }
 
+        [DataMember]
         public string Marke
         {
             get { return marke; }
             set
             {
-                if (marke.Equals(value))
+                if (value == null) return;
+                if (!string.IsNullOrEmpty(marke))
                 {
-                    return;
+                    if(marke.Equals(value)) return;
                 }
                 marke = value;
                 this.OnPropertyChanged(p => p.Marke);
             }
         }
 
+        [DataMember]
         public int Tagestarif
         {
             get { return tagestarif; }
@@ -67,6 +74,7 @@ namespace AutoReservation.Common.DataTransferObjects
             }
         }
 
+        [DataMember]
         public int Basistarif
         {
             get { return basistarif; }
@@ -102,7 +110,7 @@ namespace AutoReservation.Common.DataTransferObjects
 
             return error.ToString();
         }
-
+        
         public override AutoDto Clone()
         {
             return new AutoDto

@@ -5,10 +5,11 @@ using AutoReservation.Common.DataTransferObjects;
 using System.Collections.Generic;
 using AutoReservation.BusinessLayer;
 using AutoReservation.Dal;
+using System.ServiceModel;
 
-//TODO: Add WCF Contract expression
 namespace AutoReservation.Service.Wcf
 {
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession)]
     public class AutoReservationService : IAutoReservationService
     {
         private AutoReservationBusinessComponent businessComponent;
@@ -21,13 +22,7 @@ namespace AutoReservation.Service.Wcf
         {
             get
             {
-                List<AutoDto> autoList = new List<AutoDto>();
-                IList<Auto> autoEntitites = businessComponent.GetAutos();
-                foreach(Auto auto in autoEntitites)
-                {
-                    autoList.Add(DtoConverter.ConvertToDto(auto));
-                }
-                return autoList;     
+                return DtoConverter.ConvertToDtos(businessComponent.GetAutos());     
             }
         }
 
@@ -35,13 +30,7 @@ namespace AutoReservation.Service.Wcf
         {
             get
             {
-                List<KundeDto> kundenList = new List<KundeDto>();
-                IList<Kunde> kundenEntitites = businessComponent.GetKunden();
-                foreach (Kunde kunde in kundenEntitites)
-                {
-                    kundenList.Add(DtoConverter.ConvertToDto(kunde));
-                }
-                return kundenList;
+                return DtoConverter.ConvertToDtos(businessComponent.GetKunden());
             }
         }
 
@@ -49,13 +38,7 @@ namespace AutoReservation.Service.Wcf
         {
             get
             {
-                List<ReservationDto> reservationList = new List<ReservationDto>();
-                IList<Reservation> kundenEntitites = businessComponent.GetReservations();
-                foreach (Reservation reservation in kundenEntitites)
-                {
-                    reservationList.Add(DtoConverter.ConvertToDto(reservation));
-                }
-                return reservationList;
+                return DtoConverter.ConvertToDtos(businessComponent.GetReservations());
             }
         }
 

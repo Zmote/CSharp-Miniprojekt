@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <module name="AutoReservationServiceModule">
   <bind service="AutoReservation.Ui.Factory.IServiceFactory, AutoReservation.Ui"
-        to="AutoReservation.Ui.Factory.NullServiceFactory, AutoReservation.Ui"
+        to="AutoReservation.Ui.Factory.RemoteDataAccessServiceFactory, AutoReservation.Ui"
         scope="singleton"/>
 
 

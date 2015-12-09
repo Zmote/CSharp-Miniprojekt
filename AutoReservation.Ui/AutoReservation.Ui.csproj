@@ -129,7 +129,9 @@
     </Compile>
     <Compile Include="AutoReservationModule.cs" />
     <Compile Include="Factory\IServiceFactory.cs" />
+    <Compile Include="Factory\LocalDataAccessServiceFactory.cs" />
     <Compile Include="Factory\NullServiceFactory.cs" />
+    <Compile Include="Factory\RemoteDataAccessServiceFactory.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

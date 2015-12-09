@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Text;
 using AutoReservation.Common.DataTransferObjects.Core;
 using AutoReservation.Common.Extensions;
+using System.Diagnostics;
 
 namespace AutoReservation.Ui.ViewModels
 {

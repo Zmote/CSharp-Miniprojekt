@@ -36,11 +36,12 @@ namespace AutoReservation.Service.Wcf
             if (auto == null) { return null; }
 
             AutoDto dto = new AutoDto
-            {
+            { 
                 Id = auto.Id,
                 Marke = auto.Marke,
-                Tagestarif = auto.Tagestarif,
+                Tagestarif = auto.Tagestarif
             };
+           
 
             if (auto is StandardAuto) { dto.AutoKlasse = AutoKlasse.Standard; }
             if (auto is MittelklasseAuto) { dto.AutoKlasse = AutoKlasse.Mittelklasse; }

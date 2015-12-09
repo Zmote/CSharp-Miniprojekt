@@ -7,7 +7,6 @@ namespace AutoReservation.BusinessLayer
 {
     public class AutoReservationBusinessComponent
     {
-
         private AutoReservationEntities context;
 
         public AutoReservationBusinessComponent()

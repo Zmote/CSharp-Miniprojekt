@@ -2,6 +2,7 @@
 using AutoReservation.Common.DataTransferObjects.Core;
 using System.Text;
 using System;
+using System.Runtime.Serialization;
 
 namespace AutoReservation.Common.DataTransferObjects
 {
@@ -12,6 +13,7 @@ namespace AutoReservation.Common.DataTransferObjects
         private string vorname;
         private DateTime geburtsdatum;
 
+        [DataMember]
         public DateTime Geburtsdatum
         {
             get
@@ -24,7 +26,7 @@ namespace AutoReservation.Common.DataTransferObjects
                 geburtsdatum = value;
             }
         }
-
+        [DataMember]
         public int Id
         {
             get { return id; }
@@ -38,7 +40,7 @@ namespace AutoReservation.Common.DataTransferObjects
                 this.OnPropertyChanged(p => p.Id);
             }
         }
-
+        [DataMember]
         public string Nachname
         {
             get { return nachname; }
@@ -52,7 +54,7 @@ namespace AutoReservation.Common.DataTransferObjects
                 this.OnPropertyChanged(p => p.Nachname);
             }
         }
-
+        [DataMember]
         public string Vorname
         {
             get { return vorname; }

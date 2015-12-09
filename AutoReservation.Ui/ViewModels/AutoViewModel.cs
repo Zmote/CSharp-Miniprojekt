@@ -7,6 +7,7 @@ using AutoReservation.Common.DataTransferObjects;
 using AutoReservation.Common.Extensions;
 using AutoReservation.Ui.Factory;
 using Ninject;
+using System.Diagnostics;
 
 namespace AutoReservation.Ui.ViewModels
 {
@@ -14,10 +15,10 @@ namespace AutoReservation.Ui.ViewModels
     {
         private readonly List<AutoDto> autosOriginal = new List<AutoDto>();
         private readonly ObservableCollection<AutoDto> autos = new ObservableCollection<AutoDto>();
+       
 
         public AutoViewModel(IServiceFactory factory) : base(factory)
         {
-            
         }
 
         public ObservableCollection<AutoDto> Autos
