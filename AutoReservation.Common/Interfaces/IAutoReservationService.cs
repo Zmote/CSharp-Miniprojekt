@@ -7,11 +7,6 @@ namespace AutoReservation.Common.Interfaces
     [ServiceContract]
     public interface IAutoReservationService
     {
-        //TODO: 3 Factories, Remote, Local, Null
-        // --> Remote: Normale Connection zum Server(letzte Übung)
-        //--> Local: bei GetService() -> new AutoService() instanzieren
-        //--> bei null --> sollte Mock-Service laden.
-
         IEnumerable<KundeDto> Kunden
         {
             [OperationContract] get;
@@ -24,7 +19,13 @@ namespace AutoReservation.Common.Interfaces
         {
             [OperationContract] get;
         }
-        
+
+        [OperationContract]
+        ReservationDto GetReservationByNr(int nr);
+        [OperationContract]
+        KundeDto GetKundeById(int id);
+        [OperationContract]
+        AutoDto GetAutoById(int id);
         [OperationContract]
         void InsertReservation(ReservationDto reservation);
         [OperationContract]

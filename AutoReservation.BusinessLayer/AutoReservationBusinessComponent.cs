@@ -26,12 +26,39 @@ namespace AutoReservation.BusinessLayer
             }
         }
 
+        public Reservation GetReservationByNr(int nr)
+        {
+            using (AutoReservationEntities context = new AutoReservationEntities())
+            {
+                return context.Reservationen.Where(a => a.ReservationNr == nr)
+                    .Include(a => a.Auto)
+                    .Include(b => b.Kunde)
+                    .FirstOrDefault();
+            }
+        }
+
         public IList<Auto> GetAutos()
         {
             using (AutoReservationEntities context = new AutoReservationEntities())
             {
                 var autos = from p in context.Autos select p;
                 return autos.ToList();
+            }
+        }
+
+        public Auto GetAutoById(int id)
+        {
+            using (AutoReservationEntities context = new AutoReservationEntities())
+            {
+                return context.Autos.Where(a => a.Id == id).FirstOrDefault();
+            }
+        }
+
+        public Kunde GetKundeById(int id)
+        {
+            using (AutoReservationEntities context = new AutoReservationEntities())
+            {
+                return context.Kunden.Where(a => a.Id == id).FirstOrDefault();
             }
         }
 

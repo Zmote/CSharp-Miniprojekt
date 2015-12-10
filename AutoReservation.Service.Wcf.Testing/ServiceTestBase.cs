@@ -22,31 +22,33 @@ namespace AutoReservation.Service.Wcf.Testing
         [TestMethod]
         public void Test_GetAutos()
         {
-            Assert.Inconclusive("Test not implemented.");
+            Assert.IsNotNull(Target.Autos);
         }
 
         [TestMethod]
         public void Test_GetKunden()
         {
-            Assert.Inconclusive("Test not implemented.");
+            Assert.IsNotNull(Target.Kunden);
         }
 
         [TestMethod]
         public void Test_GetReservationen()
         {
-            Assert.Inconclusive("Test not implemented.");
+            Assert.IsNotNull(Target.Reservationen);
         }
 
         [TestMethod]
         public void Test_GetAutoById()
         {
-            Assert.Inconclusive("Test not implemented.");
+            AutoDto myAuto = Target.GetAutoById(1);
+            Assert.AreEqual(myAuto.Marke, "Fiat Punto");
         }
 
         [TestMethod]
         public void Test_GetKundeById()
         {
-            Assert.Inconclusive("Test not implemented.");
+            KundeDto myKunde = Target.GetKundeById(1);
+            Assert.AreEqual(myKunde.Vorname, "Anna");
         }
 
         [TestMethod]

@@ -28,6 +28,11 @@ namespace AutoReservation.Service.Wcf
             }
         }
 
+        public AutoDto GetAutoById(int id)
+        {
+            return DtoConverter.ConvertToDto(businessComponent.GetAutoById(id));
+        }
+
         public IEnumerable<KundeDto> Kunden
         {
             get
@@ -36,12 +41,22 @@ namespace AutoReservation.Service.Wcf
             }
         }
 
+        public KundeDto GetKundeById(int id)
+        {
+            return DtoConverter.ConvertToDto(businessComponent.GetKundeById(id));
+        }
+
         public IEnumerable<ReservationDto> Reservationen
         {
             get
             {
                 return DtoConverter.ConvertToDtos(businessComponent.GetReservations());
             }
+        }
+
+        public ReservationDto GetReservationByNr(int nr)
+        {
+            return DtoConverter.ConvertToDto(businessComponent.GetReservationByNr(nr));
         }
 
         public void DeleteAuto(AutoDto selectedAuto)
