@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoReservation.Common.Interfaces;
+using AutoReservation.Service.Wcf;
 
 namespace AutoReservation.Ui.Factory
 {
@@ -11,7 +12,7 @@ namespace AutoReservation.Ui.Factory
     {
         public IAutoReservationService GetService()
         {
-            throw new NotImplementedException();
+            return new AutoReservationService();
         }
     }
 }

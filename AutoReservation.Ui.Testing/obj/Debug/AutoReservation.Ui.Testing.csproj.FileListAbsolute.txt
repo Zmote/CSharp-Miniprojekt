@@ -24,3 +24,7 @@ C:\Users\shoda_000\Desktop\C#-Miniprojekt\AutoReservation.Ui.Testing\bin\Debug\N
 C:\Users\shoda_000\Desktop\C#-Miniprojekt\AutoReservation.Ui.Testing\bin\Debug\AutoReservation.Dal.pdb
 C:\Users\shoda_000\Desktop\C#-Miniprojekt\AutoReservation.Ui.Testing\obj\Debug\AutoReservation.Ui.Testing.dll
 C:\Users\shoda_000\Desktop\C#-Miniprojekt\AutoReservation.Ui.Testing\obj\Debug\AutoReservation.Ui.Testing.pdb
+C:\Users\shoda_000\Desktop\C#-Miniprojekt\AutoReservation.Ui.Testing\bin\Debug\AutoReservation.Service.Wcf.dll
+C:\Users\shoda_000\Desktop\C#-Miniprojekt\AutoReservation.Ui.Testing\bin\Debug\AutoReservation.BusinessLayer.dll
+C:\Users\shoda_000\Desktop\C#-Miniprojekt\AutoReservation.Ui.Testing\bin\Debug\AutoReservation.Service.Wcf.pdb
+C:\Users\shoda_000\Desktop\C#-Miniprojekt\AutoReservation.Ui.Testing\bin\Debug\AutoReservation.BusinessLayer.pdb

@@ -4,14 +4,16 @@ using System.Diagnostics;
 using AutoReservation.Common.DataTransferObjects;
 using System.Collections.Generic;
 using AutoReservation.BusinessLayer;
-using AutoReservation.Dal;
 using System.ServiceModel;
+using System.Data.Entity.Infrastructure;
+using AutoReservation.Dal;
 
 namespace AutoReservation.Service.Wcf
 {
+    
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession)]
     public class AutoReservationService : IAutoReservationService
-    {
+    {   
         private AutoReservationBusinessComponent businessComponent;
         public AutoReservationService()
         {
@@ -64,12 +66,26 @@ namespace AutoReservation.Service.Wcf
 
         public void UpdateAuto(AutoDto modifiedAuto, AutoDto original)
         {
-            businessComponent.UpdateAuto(DtoConverter.ConvertToEntity(modifiedAuto), DtoConverter.ConvertToEntity(original));
+            try
+            {
+                businessComponent.UpdateAuto(DtoConverter.ConvertToEntity(modifiedAuto), DtoConverter.ConvertToEntity(original));
+            }
+            catch (LocalOptimisticConcurrencyException<Auto>)
+            {
+                throw new FaultException<AutoDto>(original);
+            }
         }
 
         public void UpdateReservation(ReservationDto modifiedReservation, ReservationDto original)
         {
-            businessComponent.UpdateReservation(DtoConverter.ConvertToEntity(modifiedReservation), DtoConverter.ConvertToEntity(original));
+            try
+            {
+                businessComponent.UpdateReservation(DtoConverter.ConvertToEntity(modifiedReservation), DtoConverter.ConvertToEntity(original));
+            }
+            catch(LocalOptimisticConcurrencyException<Reservation>)
+            {
+                throw new FaultException<ReservationDto>(original);
+            }
         }
 
         private static void WriteActualMethod()
@@ -84,7 +100,14 @@ namespace AutoReservation.Service.Wcf
 
         public void UpdateKunde(KundeDto modifiedKunde, KundeDto original)
         {
-            businessComponent.UpdateKunde(DtoConverter.ConvertToEntity(modifiedKunde), DtoConverter.ConvertToEntity(original));
+            try
+            {
+                businessComponent.UpdateKunde(DtoConverter.ConvertToEntity(modifiedKunde), DtoConverter.ConvertToEntity(original));
+            }
+            catch(LocalOptimisticConcurrencyException<Kunde>)
+            {
+                throw new FaultException<KundeDto>(original);
+            }
         }
 
         public void DeleteKunde(KundeDto selectedKunde)

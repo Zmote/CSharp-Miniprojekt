@@ -24,6 +24,7 @@ namespace AutoReservation.Common.DataTransferObjects
             set
             {
                 geburtsdatum = value;
+                this.OnPropertyChanged(p => p.Geburtsdatum);
             }
         }
         [DataMember]

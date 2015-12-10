@@ -25,6 +25,7 @@ namespace AutoReservation.Common.DataTransferObjects
             set
             {
                 auto = value;
+                this.OnPropertyChanged(p => p.Auto);
             }
         }
 
@@ -39,6 +40,7 @@ namespace AutoReservation.Common.DataTransferObjects
             set
             {
                 kunde = value;
+                this.OnPropertyChanged(p => p.Kunde);
             }
         }
 

@@ -8,6 +8,7 @@ using AutoReservation.Common.Extensions;
 using AutoReservation.Ui.Factory;
 using Ninject;
 using System.Diagnostics;
+using System.ServiceModel;
 
 namespace AutoReservation.Ui.ViewModels
 {
@@ -95,7 +96,14 @@ namespace AutoReservation.Ui.ViewModels
                 else
                 {
                     var original = autosOriginal.FirstOrDefault(ao => ao.Id == auto.Id);
-                    Service.UpdateAuto(auto, original);
+                    try
+                    {
+                        Service.UpdateAuto(auto, original);
+                    }catch(FaultException<AutoDto> ex)
+                    {
+                        //TODO: Debug.Message fix
+                        Debug.WriteLine(ex.Message);
+                    }
                 }
             }
             Load();

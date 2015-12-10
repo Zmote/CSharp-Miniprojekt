@@ -6,6 +6,8 @@ using AutoReservation.Common.Extensions;
 using AutoReservation.Ui.Factory;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
+using System.Diagnostics;
 
 namespace AutoReservation.Ui.ViewModels
 {
@@ -95,7 +97,14 @@ namespace AutoReservation.Ui.ViewModels
                 else
                 {
                     var original = kundenOriginal.FirstOrDefault(ao => ao.Id == kunde.Id);
-                    Service.UpdateKunde(kunde, original);
+                    try
+                    {
+                        Service.UpdateKunde(kunde, original);
+                    }
+                    catch (FaultException<KundeDto> ex)
+                    {
+                        Debug.WriteLine(ex.Message);
+                    }
                 }
             }
             Load();

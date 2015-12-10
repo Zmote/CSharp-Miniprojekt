@@ -9,10 +9,9 @@ namespace AutoReservation.Common.DataTransferObjects
     public class AutoDto : DtoBase<AutoDto>
     {
         private int id;
-        private string marke = "";
-        private int tagestarif = 0;
-        private int basistarif = 0;
-        //TODO: check if it works like this, no need for property?
+        private string marke;
+        private int tagestarif;
+        private int basistarif;
         private AutoKlasse autoklasse;
 
         [DataMember]
@@ -25,6 +24,7 @@ namespace AutoReservation.Common.DataTransferObjects
             set
             {
                 autoklasse = value;
+                this.OnPropertyChanged(p => p.AutoKlasse);
             }
         }
 
@@ -100,7 +100,6 @@ namespace AutoReservation.Common.DataTransferObjects
             {
                 error.AppendLine("- Tagestarif muss grösser als 0 sein.");
             }
-            //TODO: implement enum correctly
             if (AutoKlasse == AutoKlasse.Luxusklasse && basistarif <= 0)
             {
                 error.AppendLine("- Basistarif eines Luxusautos muss grösser als 0 sein.");

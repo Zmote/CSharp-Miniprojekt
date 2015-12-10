@@ -7,6 +7,8 @@ using System.Windows.Input;
 using AutoReservation.Common.DataTransferObjects;
 using AutoReservation.Common.Extensions;
 using AutoReservation.Ui.Factory;
+using System.ServiceModel;
+using System.Diagnostics;
 
 namespace AutoReservation.Ui.ViewModels
 {
@@ -161,7 +163,14 @@ namespace AutoReservation.Ui.ViewModels
                 else
                 {
                     var original = reservationenOriginal.FirstOrDefault(ao => ao.ReservationNr == reservation.ReservationNr);
-                    Service.UpdateReservation(reservation, original);
+                    try
+                    {
+                        Service.UpdateReservation(reservation, original);
+                    }
+                    catch (FaultException<ReservationDto> ex)
+                    {
+                        Debug.WriteLine(ex.Message);
+                    }
                 }
             }
             Load();
