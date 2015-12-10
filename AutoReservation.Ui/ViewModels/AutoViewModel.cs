@@ -101,8 +101,7 @@ namespace AutoReservation.Ui.ViewModels
                         Service.UpdateAuto(auto, original);
                     }catch(FaultException<AutoDto> ex)
                     {
-                        //TODO: Debug.Message fix
-                        Debug.WriteLine(ex.Message);
+                        Debug.WriteLine(ex.Detail);
                     }
                 }
             }

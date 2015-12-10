@@ -169,7 +169,7 @@ namespace AutoReservation.Ui.ViewModels
                     }
                     catch (FaultException<ReservationDto> ex)
                     {
-                        Debug.WriteLine(ex.Message);
+                        Debug.WriteLine(ex.Detail);
                     }
                 }
             }

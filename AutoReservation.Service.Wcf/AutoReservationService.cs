@@ -70,9 +70,9 @@ namespace AutoReservation.Service.Wcf
             {
                 businessComponent.UpdateAuto(DtoConverter.ConvertToEntity(modifiedAuto), DtoConverter.ConvertToEntity(original));
             }
-            catch (LocalOptimisticConcurrencyException<Auto>)
+            catch (LocalOptimisticConcurrencyException<Auto> ex)
             {
-                throw new FaultException<AutoDto>(original);
+                throw new FaultException<AutoDto>(DtoConverter.ConvertToDto(ex.MergedEntity));
             }
         }
 
@@ -82,9 +82,9 @@ namespace AutoReservation.Service.Wcf
             {
                 businessComponent.UpdateReservation(DtoConverter.ConvertToEntity(modifiedReservation), DtoConverter.ConvertToEntity(original));
             }
-            catch(LocalOptimisticConcurrencyException<Reservation>)
+            catch(LocalOptimisticConcurrencyException<Reservation> ex)
             {
-                throw new FaultException<ReservationDto>(original);
+                throw new FaultException<ReservationDto>(DtoConverter.ConvertToDto(ex.MergedEntity));
             }
         }
 
@@ -104,9 +104,9 @@ namespace AutoReservation.Service.Wcf
             {
                 businessComponent.UpdateKunde(DtoConverter.ConvertToEntity(modifiedKunde), DtoConverter.ConvertToEntity(original));
             }
-            catch(LocalOptimisticConcurrencyException<Kunde>)
+            catch(LocalOptimisticConcurrencyException<Kunde> ex)
             {
-                throw new FaultException<KundeDto>(original);
+                throw new FaultException<KundeDto>(DtoConverter.ConvertToDto(ex.MergedEntity));
             }
         }
 

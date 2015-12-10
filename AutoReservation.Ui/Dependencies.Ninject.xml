@@ -3,9 +3,6 @@
   <bind service="AutoReservation.Ui.Factory.IServiceFactory, AutoReservation.Ui"
         to="AutoReservation.Ui.Factory.RemoteDataAccessServiceFactory, AutoReservation.Ui"
         scope="singleton"/>
-
-
-  
   <!-- ALL NINJECT MAPPINGS -->
   
   <!-- Injection of NullObject as long as no concrete factory exists -->
