@@ -4,6 +4,8 @@ using AutoReservation.TestEnvironment;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 using System.ServiceModel;
 
 namespace AutoReservation.Service.Wcf.Testing
@@ -54,31 +56,77 @@ namespace AutoReservation.Service.Wcf.Testing
         [TestMethod]
         public void Test_GetReservationByNr()
         {
-            Assert.Inconclusive("Test not implemented.");
+            ReservationDto myReservation = Target.GetReservationByNr(1);
+            Assert.AreEqual(myReservation.Kunde.Vorname, "Anna");
         }
 
         [TestMethod]
         public void Test_GetReservationByIllegalNr()
         {
-            Assert.Inconclusive("Test not implemented.");
+            Assert.IsNull(Target.GetReservationByNr(10));
         }
 
         [TestMethod]
         public void Test_InsertAuto()
         {
-            Assert.Inconclusive("Test not implemented.");
+            AutoDto myAuto = new AutoDto
+            {
+                Id = 4,
+                Marke = "Porsche",
+                Tagestarif = 200,
+                AutoKlasse = AutoKlasse.Standard
+            };
+
+            Target.InsertAuto(myAuto);
+            AutoDto insertedAuto = Target.GetAutoById(4);
+            Assert.AreEqual(myAuto.Id, insertedAuto.Id);
+            Assert.AreEqual(myAuto.AutoKlasse, insertedAuto.AutoKlasse);
+            Assert.AreEqual(myAuto.Marke, insertedAuto.Marke);
+            Assert.AreEqual(myAuto.Tagestarif, insertedAuto.Tagestarif);
         }
 
         [TestMethod]
         public void Test_InsertKunde()
         {
-            Assert.Inconclusive("Test not implemented.");
+            KundeDto myKunde = new KundeDto
+            {
+                Id = 5,
+                Vorname = "Zafer",
+                Nachname = "Dogan",
+                Geburtsdatum = new DateTime(2015, 12, 12)
+            };
+
+            Target.InsertKunde(myKunde);
+            KundeDto insertedKunde = Target.GetKundeById(5);
+            Assert.AreEqual(myKunde.Id, insertedKunde.Id);
+            Assert.AreEqual(myKunde.Vorname, insertedKunde.Vorname);
+            Assert.AreEqual(myKunde.Nachname, insertedKunde.Nachname);
+            Assert.AreEqual(myKunde.Geburtsdatum, insertedKunde.Geburtsdatum);
         }
 
         [TestMethod]
         public void Test_InsertReservation()
         {
-            Assert.Inconclusive("Test not implemented.");
+            AutoDto myAuto = Target.GetAutoById(1);
+            KundeDto myKunde = Target.GetKundeById(1);
+            ReservationDto myReservation = new ReservationDto
+            {
+                Auto = myAuto,
+                Kunde = myKunde,
+                Von = new DateTime(2015, 12, 12),
+                Bis = new DateTime(2015, 12, 13)
+            };
+            //TODO: Problem: Doesn't insert for some reason
+            //Note: Insert Reservation works from UI though
+            //so nothing wrong with datastructure, something in test setup
+            Target.InsertReservation(myReservation);
+            ReservationDto insertedReservation = Target.GetReservationByNr(5);
+            Debug.WriteLine("I am Reservations:{0}", Target.Reservationen.Last());
+            Assert.AreEqual(myReservation.ReservationNr, insertedReservation.ReservationNr);
+            Assert.AreEqual(myReservation.Auto, insertedReservation.Auto);
+            Assert.AreEqual(myReservation.Kunde, insertedReservation.Kunde);
+            Assert.AreEqual(myReservation.Von, insertedReservation.Von);
+            Assert.AreEqual(myReservation.Bis, insertedReservation.Bis);
         }
 
         [TestMethod]
