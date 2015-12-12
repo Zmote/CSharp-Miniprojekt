@@ -111,40 +111,80 @@ namespace AutoReservation.Service.Wcf.Testing
             KundeDto myKunde = Target.GetKundeById(1);
             ReservationDto myReservation = new ReservationDto
             {
+                ReservationNr = 0,
                 Auto = myAuto,
                 Kunde = myKunde,
                 Von = new DateTime(2015, 12, 12),
                 Bis = new DateTime(2015, 12, 13)
             };
-            //TODO: Problem: Doesn't insert for some reason
-            //Note: Insert Reservation works from UI though
-            //so nothing wrong with datastructure, something in test setup
             Target.InsertReservation(myReservation);
-            ReservationDto insertedReservation = Target.GetReservationByNr(5);
-            Debug.WriteLine("I am Reservations:{0}", Target.Reservationen.Last());
-            Assert.AreEqual(myReservation.ReservationNr, insertedReservation.ReservationNr);
-            Assert.AreEqual(myReservation.Auto, insertedReservation.Auto);
-            Assert.AreEqual(myReservation.Kunde, insertedReservation.Kunde);
-            Assert.AreEqual(myReservation.Von, insertedReservation.Von);
-            Assert.AreEqual(myReservation.Bis, insertedReservation.Bis);
+            ReservationDto insertedReservation = Target.GetReservationByNr(4);
+            Assert.AreEqual(insertedReservation.Auto.Marke, myReservation.Auto.Marke);
+            Assert.AreEqual(insertedReservation.Auto.Tagestarif, myReservation.Auto.Tagestarif);
+            Assert.AreEqual(insertedReservation.Kunde.Vorname, myReservation.Kunde.Vorname);
+            Assert.AreEqual(insertedReservation.Kunde.Nachname, myReservation.Kunde.Nachname);
+            Assert.AreEqual(insertedReservation.Von, myReservation.Von);
+            Assert.AreEqual(insertedReservation.Bis, myReservation.Bis);
         }
 
         [TestMethod]
         public void Test_UpdateAuto()
         {
-            Assert.Inconclusive("Test not implemented.");
+            AutoDto myAuto = new AutoDto
+            {
+                Id = 1,
+                AutoKlasse = AutoKlasse.Standard,
+                Tagestarif = 2000,
+                Basistarif = 0,
+                Marke = "Porsche X2"
+            };
+            AutoDto originalAuto = Target.GetAutoById(1);
+            Target.UpdateAuto(myAuto,originalAuto);
+            Assert.AreEqual(myAuto.Marke, "Porsche X2");
+            Assert.AreEqual(myAuto.Tagestarif, 2000);
+            Assert.AreEqual(myAuto.Basistarif, 0);
         }
 
         [TestMethod]
         public void Test_UpdateKunde()
         {
-            Assert.Inconclusive("Test not implemented.");
+            KundeDto originalKunde = Target.GetKundeById(1);
+            KundeDto myKunde = new KundeDto
+            {
+                Id = 1,
+                Vorname = "Zafer",
+                Nachname = "Dogan",
+                Geburtsdatum = new DateTime(2001, 12, 13)
+            };
+            Debug.WriteLine("I am original kunde:{0}",originalKunde);
+            Target.UpdateKunde(myKunde,originalKunde);
+            KundeDto changedKunde = Target.GetKundeById(1);
+            Debug.WriteLine("I am changed kunde:{0}", changedKunde);
+            Assert.AreEqual(changedKunde.Vorname, "Zafer");
+            Assert.AreEqual(changedKunde.Nachname, "Dogan");
         }
 
         [TestMethod]
         public void Test_UpdateReservation()
         {
-            Assert.Inconclusive("Test not implemented.");
+
+            AutoDto myAuto = Target.GetAutoById(1);
+            KundeDto myKunde = Target.GetKundeById(1);
+            ReservationDto myReservation = new ReservationDto
+            {
+                ReservationNr = 3,
+                Auto = myAuto,
+                Kunde = myKunde,
+                Von = new DateTime(2015, 12, 12),
+                Bis = new DateTime(2015, 12, 13)
+            };
+
+            ReservationDto originalReservation = Target.GetReservationByNr(3);
+            Target.UpdateReservation(myReservation,originalReservation);
+            ReservationDto updatedReservation = Target.GetReservationByNr(3);
+            Assert.AreEqual(updatedReservation.Auto.Tagestarif, 50);
+            Assert.AreEqual(updatedReservation.Kunde.Vorname, "Anna");
+            Assert.AreEqual(updatedReservation.Kunde.Nachname, "Nass");
         }
 
         [TestMethod]
@@ -171,19 +211,33 @@ namespace AutoReservation.Service.Wcf.Testing
         [TestMethod]
         public void Test_DeleteKunde()
         {
-            Assert.Inconclusive("Test not implemented.");
         }
 
         [TestMethod]
         public void Test_DeleteAuto()
         {
-            Assert.Inconclusive("Test not implemented.");
+            AutoDto myAuto = new AutoDto
+            {
+                Id = 1,
+                Marke = "Fiat Punto",
+                Tagestarif = 50,
+                Basistarif = 0,
+                AutoKlasse = AutoKlasse.Standard
+            };
+            int before = Target.Autos.Count();
+            Target.DeleteAuto(myAuto);
+            int after = Target.Autos.Count();
+            Assert.AreNotEqual(before, after);
         }
 
         [TestMethod]
         public void Test_DeleteReservation()
         {
-            Assert.Inconclusive("Test not implemented.");
+            ReservationDto myReservation = Target.GetReservationByNr(1);
+            int before = Target.Reservationen.Count();
+            Target.DeleteReservation(myReservation);
+            int after = Target.Reservationen.Count();
+            Assert.AreNotEqual(before, after);
         }
     }
 }

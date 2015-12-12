@@ -5,6 +5,5 @@ C:\Users\shoda_000\Desktop\C#-Miniprojekt\AutoReservation.Dal\bin\Debug\EntityFr
 C:\Users\shoda_000\Desktop\C#-Miniprojekt\AutoReservation.Dal\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\shoda_000\Desktop\C#-Miniprojekt\AutoReservation.Dal\bin\Debug\EntityFramework.xml
 C:\Users\shoda_000\Desktop\C#-Miniprojekt\AutoReservation.Dal\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\shoda_000\Desktop\C#-Miniprojekt\AutoReservation.Dal\obj\Debug\AutoReservation.Dal.csprojResolveAssemblyReference.cache
 C:\Users\shoda_000\Desktop\C#-Miniprojekt\AutoReservation.Dal\obj\Debug\AutoReservation.Dal.dll
 C:\Users\shoda_000\Desktop\C#-Miniprojekt\AutoReservation.Dal\obj\Debug\AutoReservation.Dal.pdb

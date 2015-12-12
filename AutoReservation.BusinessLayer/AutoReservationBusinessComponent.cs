@@ -118,8 +118,16 @@ namespace AutoReservation.BusinessLayer
         {
             using (AutoReservationEntities context = new AutoReservationEntities())
             {
-                context.Reservationen.Add(reservation);
-                context.SaveChanges();
+                try
+                {
+                    context.Reservationen.Add(reservation);
+                    context.SaveChanges();
+                }
+                catch(Exception ex)
+                {
+                    Debug.WriteLine("I am ex.Data:{0}",ex.Data);
+                }
+                
             }
         }
 
