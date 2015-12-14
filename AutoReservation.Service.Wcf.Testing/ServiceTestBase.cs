@@ -211,6 +211,17 @@ namespace AutoReservation.Service.Wcf.Testing
         [TestMethod]
         public void Test_DeleteKunde()
         {
+            KundeDto myKunde = new KundeDto
+            {
+                Id = 1,
+                Nachname = "Nass",
+                Vorname = "Anna",
+                Geburtsdatum = new DateTime(1961,5,5)
+            };
+            int before = Target.Kunden.Count();
+            Target.DeleteKunde(myKunde);
+            int after = Target.Kunden.Count();
+            Assert.AreNotEqual(before, after);
         }
 
         [TestMethod]
