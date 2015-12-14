@@ -3,6 +3,7 @@ using AutoReservation.Ui.ViewModels;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using AutoReservation.Ui.Factory;
 using Ninject;
+using System.Diagnostics;
 
 namespace AutoReservation.Ui.Testing
 {
@@ -16,7 +17,6 @@ namespace AutoReservation.Ui.Testing
         {
             kernel = new StandardKernel();
             kernel.Load("Dependencies.Ninject.xml");
-
             TestEnvironmentHelper.InitializeTestData();
         }
         
@@ -25,7 +25,6 @@ namespace AutoReservation.Ui.Testing
         {
             AutoViewModel vm = new AutoViewModel(kernel.Get<IServiceFactory>());
             vm.Init();
-            //TODO: figure out service starting issue form viewmodeltest
             Assert.IsNotNull(vm.Autos);
         }
 
@@ -34,8 +33,7 @@ namespace AutoReservation.Ui.Testing
         {
             KundeViewModel vm = new KundeViewModel(kernel.Get<IServiceFactory>());
             vm.Init();
-
-            Assert.Inconclusive("Test not implemented.");
+            Assert.IsNotNull(vm.Kunden);
         }
 
         [TestMethod]
@@ -43,8 +41,7 @@ namespace AutoReservation.Ui.Testing
         {
             ReservationViewModel vm = new ReservationViewModel(kernel.Get<IServiceFactory>());
             vm.Init();
-
-            Assert.Inconclusive("Test not implemented.");
+            Assert.IsNotNull(vm.Reservationen);
         }
     }
 }

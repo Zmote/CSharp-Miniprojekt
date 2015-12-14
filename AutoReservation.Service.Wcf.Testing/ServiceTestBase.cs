@@ -191,21 +191,78 @@ namespace AutoReservation.Service.Wcf.Testing
         [ExpectedException(typeof(FaultException<AutoDto>))]
         public void Test_UpdateAutoWithOptimisticConcurrency()
         {
-            Assert.Inconclusive("Test not implemented.");
+            AutoDto myAuto1 = new AutoDto
+            {
+                Id = 1,
+                AutoKlasse = AutoKlasse.Standard,
+                Tagestarif = 550,
+                Basistarif = 0,
+                Marke = "Porsche X2"
+            };
+            AutoDto myAuto2 = new AutoDto
+            {
+                Id = 1,
+                AutoKlasse = AutoKlasse.Standard,
+                Tagestarif = 1000,
+                Basistarif = 0,
+                Marke = "Porsche X2"
+            };
+            AutoDto originalAuto = Target.GetAutoById(1);
+            Target.UpdateAuto(myAuto1, originalAuto);
+            Target.UpdateAuto(myAuto2, originalAuto);
         }
 
         [TestMethod]
         [ExpectedException(typeof(FaultException<KundeDto>))]
         public void Test_UpdateKundeWithOptimisticConcurrency()
-        {
-            Assert.Inconclusive("Test not implemented.");
+        {            
+            KundeDto myKunde1 = new KundeDto
+            {
+                Id = 1,
+                Vorname = "Jean Claude",
+                Nachname = "Vandame",
+                Geburtsdatum = new DateTime(2001, 12, 13)
+            };
+            KundeDto myKunde2 = new KundeDto
+            {
+                Id = 1,
+                Vorname = "Zafer",
+                Nachname = "Dogan",
+                Geburtsdatum = new DateTime(2001, 12, 13)
+            };
+            KundeDto originalKunde = Target.GetKundeById(1);
+            Target.UpdateKunde(myKunde1, originalKunde);
+            Target.UpdateKunde(myKunde2, originalKunde);
         }
 
         [TestMethod]
         [ExpectedException(typeof(FaultException<ReservationDto>))]
         public void Test_UpdateReservationWithOptimisticConcurrency()
         {
-            Assert.Inconclusive("Test not implemented.");
+            AutoDto myAuto = Target.GetAutoById(1);
+            AutoDto myAuto2 = Target.GetAutoById(2);
+            KundeDto myKunde = Target.GetKundeById(1);
+            KundeDto myKunde2 = Target.GetKundeById(2);
+            ReservationDto myReservation1 = new ReservationDto
+            {
+                ReservationNr = 3,
+                Auto = myAuto,
+                Kunde = myKunde,
+                Von = new DateTime(2015, 12, 12),
+                Bis = new DateTime(2015, 12, 14)
+            };
+            ReservationDto myReservation2 = new ReservationDto
+            {
+                ReservationNr = 3,
+                Auto = myAuto2,
+                Kunde = myKunde2,
+                Von = new DateTime(2015, 12, 12),
+                Bis = new DateTime(2015, 12, 13)
+            };
+
+            ReservationDto originalReservation = Target.GetReservationByNr(3);
+            Target.UpdateReservation(myReservation1, originalReservation);
+            Target.UpdateReservation(myReservation2, originalReservation);
         }
 
         [TestMethod]

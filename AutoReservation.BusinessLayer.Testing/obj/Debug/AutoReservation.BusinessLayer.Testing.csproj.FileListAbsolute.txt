@@ -34,3 +34,5 @@ C:\Users\Zmote\Desktop\CSharp-Miniprojekt\AutoReservation.BusinessLayer.Testing\
 C:\Users\Zmote\Desktop\CSharp-Miniprojekt\AutoReservation.BusinessLayer.Testing\obj\Debug\AutoReservation.BusinessLayer.Testing.pdb
 C:\Users\shoda_000\Desktop\C#-Miniprojekt\AutoReservation.BusinessLayer.Testing\bin\Debug\AutoReservation.Common.dll
 C:\Users\shoda_000\Desktop\C#-Miniprojekt\AutoReservation.BusinessLayer.Testing\bin\Debug\AutoReservation.Common.pdb
+C:\Users\Zmote\Desktop\CSharp-Miniprojekt\AutoReservation.BusinessLayer.Testing\bin\Debug\AutoReservation.Common.dll
+C:\Users\Zmote\Desktop\CSharp-Miniprojekt\AutoReservation.BusinessLayer.Testing\bin\Debug\AutoReservation.Common.pdb
