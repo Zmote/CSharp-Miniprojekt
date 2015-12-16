@@ -20,3 +20,14 @@ C:\Users\Zmote\Desktop\CSharp-Miniprojekt\AutoReservation.BusinessLayer\bin\Debu
 C:\Users\Zmote\Desktop\CSharp-Miniprojekt\AutoReservation.BusinessLayer\obj\Debug\AutoReservation.BusinessLayer.csprojResolveAssemblyReference.cache
 C:\Users\Zmote\Desktop\CSharp-Miniprojekt\AutoReservation.BusinessLayer\obj\Debug\AutoReservation.BusinessLayer.dll
 C:\Users\Zmote\Desktop\CSharp-Miniprojekt\AutoReservation.BusinessLayer\obj\Debug\AutoReservation.BusinessLayer.pdb
+C:\Users\shoda_000\Desktop\CSharp-Miniprojekt\AutoReservation.BusinessLayer\bin\Debug\AutoReservation.BusinessLayer.dll
+C:\Users\shoda_000\Desktop\CSharp-Miniprojekt\AutoReservation.BusinessLayer\bin\Debug\AutoReservation.BusinessLayer.pdb
+C:\Users\shoda_000\Desktop\CSharp-Miniprojekt\AutoReservation.BusinessLayer\bin\Debug\AutoReservation.Dal.dll
+C:\Users\shoda_000\Desktop\CSharp-Miniprojekt\AutoReservation.BusinessLayer\bin\Debug\EntityFramework.dll
+C:\Users\shoda_000\Desktop\CSharp-Miniprojekt\AutoReservation.BusinessLayer\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\shoda_000\Desktop\CSharp-Miniprojekt\AutoReservation.BusinessLayer\bin\Debug\AutoReservation.Dal.pdb
+C:\Users\shoda_000\Desktop\CSharp-Miniprojekt\AutoReservation.BusinessLayer\bin\Debug\EntityFramework.xml
+C:\Users\shoda_000\Desktop\CSharp-Miniprojekt\AutoReservation.BusinessLayer\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\shoda_000\Desktop\CSharp-Miniprojekt\AutoReservation.BusinessLayer\obj\Debug\AutoReservation.BusinessLayer.csprojResolveAssemblyReference.cache
+C:\Users\shoda_000\Desktop\CSharp-Miniprojekt\AutoReservation.BusinessLayer\obj\Debug\AutoReservation.BusinessLayer.dll
+C:\Users\shoda_000\Desktop\CSharp-Miniprojekt\AutoReservation.BusinessLayer\obj\Debug\AutoReservation.BusinessLayer.pdb

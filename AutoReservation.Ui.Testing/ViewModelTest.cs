@@ -3,13 +3,31 @@ using AutoReservation.Ui.ViewModels;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using AutoReservation.Ui.Factory;
 using Ninject;
+using System.ServiceModel;
 using System.Diagnostics;
+using AutoReservation.Service.Wcf;
 
 namespace AutoReservation.Ui.Testing
 {
     [TestClass]
     public class ViewModelTest
     {
+        private static ServiceHost serviceHost;
+        //To avoid having to change Dependencies.Ninject.xml manually
+        [ClassInitialize]
+        public static void Setup(TestContext context)
+        {
+            serviceHost = new ServiceHost(typeof(AutoReservationService));
+            serviceHost.Open();
+        }
+
+        [ClassCleanup]
+        public static void TearDown()
+        {
+            if (serviceHost.State != CommunicationState.Closed)
+                serviceHost.Close();
+        }
+
         private IKernel kernel;
 
         [TestInitialize]
