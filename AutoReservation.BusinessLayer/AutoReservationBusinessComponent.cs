@@ -62,11 +62,23 @@ namespace AutoReservation.BusinessLayer
             }
         }
 
-        public IList<Kunde> GetKunden()
+        public IEnumerable<Kunde> GetKunden()
         {
             using (AutoReservationEntities context = new AutoReservationEntities())
             {
-                var kunden = from p in context.Kunden select p;
+                //kann also auch direkt, ohne Linq query, geholt werden
+                var kunden = context.Kunden;
+                //ToList() bei IEnumberable, wegen Deffered Evaluation(damit hier schon query ausgeführt wird und nicht
+                //ausserhalb des using blocks
+                //Unterschied .FirstOrDefault() vs SingleOrDefault() --> 
+                // bei SingleOrDefault wird falls indexiert, binary search angewendet, schnell
+                // falls nicht indexiert, lineare Suche, langsam
+                // SingleOrDefault wirft exception, falls der Eintrag nicht gefunden wird
+                //das using Konstrukt hier kann mit jedem Objekt, das IDisposable einsetzt, verwendet werden,
+                //weil beim Verlassen des using Blocks, .Dispose() aufgerufen wird. Wie ein finally-Block, das
+                //den Garbage-Collector aufruft(Analogie Java)
+                //using ist auch BestPractice bei Sachen wie IOStreams
+                //--> darum zyklen klein halten, damit keine File-Blockade
                 return kunden.ToList();
             }
         }
